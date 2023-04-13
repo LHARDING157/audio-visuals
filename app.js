@@ -10,7 +10,7 @@ let clicks = 0;
 let maxClicksAllowed = 25;
 
 const state = {
-  allProductsArray: [],
+  allProdArray: [],
 };
 
 function Products(name, src) {
@@ -21,7 +21,7 @@ function Products(name, src) {
 }
 
 function getRandomNumber() {
-  return Math.floor(Math.random() * state.allProductsArray.length);
+  return Math.floor(Math.random() * state.allProdArray.length);
 }
 
 function renderProduct() {
@@ -37,15 +37,15 @@ function renderProduct() {
     prod3 = getRandomNumber();
   }
 
-  image1.src = state.allProductsArray[prod1].src;
-  image2.src = state.allProductsArray[prod2].src;
-  image3.src = state.allProductsArray[prod3].src;
-  image1.alt = state.allProductsArray[prod1].name;
-  image2.atl = state.allProductsArray[prod2].name;
-  image3.alt = state.allProductsArray[prod3].name;
-  state.allProductsArray[prod1].views++;
-  state.allProductsArray[prod2].views++;
-  state.allProductsArray[prod3].views++;
+  image1.src = state.allProdArray[prod1].src;
+  image2.src = state.allProdArray[prod2].src;
+  image3.src = state.allProdArray[prod3].src;
+  image1.alt = state.allProdArray[prod1].name;
+  image2.atl = state.allProdArray[prod2].name;
+  image3.alt = state.allProdArray[prod3].name;
+  state.allProdArray[prod1].views++;
+  state.allProdArray[prod2].views++;
+  state.allProdArray[prod3].views++;
 }
 
 function handleProdClick(event) {
@@ -54,15 +54,16 @@ function handleProdClick(event) {
   }
   clicks++;
   let clickProd = event.target.alt;
-  for (let i = 0; i < state.allProductsArray.length; i++) {
-    if (clickProd === state.allProductsArray[i].name) {
-      state.allProductsArray[i].clicks++;
+  for (let i = 0; i < state.allProdArray.length; i++) {
+    if (clickProd === state.allProdArray[i].name) {
+      state.allProdArray[i].clicks++;
       break;
     }
   }
   if (clicks === maxClicksAllowed) {
     productContainer.removeEventListener("click", handleProdClick);
     resultButton.addEventListener("click", renderChart);
+    resultButton.addEventListener("click", renderResults);
     // resultButton.className = `clicks-allowed`;
     productContainer.className = `no-voting`;
     alert("Please Click on Results");
@@ -71,22 +72,22 @@ function handleProdClick(event) {
   }
 }
 
-// function renderResults() {
-//   let ul = document.querySelector("ul");
-//   for (let i = 0; i < state.allProductsArray.length; i++) {
-//     let li = document.createElement("li");
-//     li.textContent = `${state.allProductsArray[i].name} had ${state.allProductsArray[i].clicks} votes, and was seen ${state.allProductsArray[i].views} times.`;
-//     ul.appendChild(li);
-//   }
-// }
+function renderResults() {
+  let ul = document.querySelector("ul");
+  for (let i = 0; i < state.allProdArray.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = `${state.allProdArray[i].name} had ${state.allProdArray[i].clicks} votes, and was seen ${state.allProdArray[i].views} times.`;
+    ul.appendChild(li);
+  }
+}
 
 function renderChart() {
   const labelArray = [];
   const clicksArray = [];
   const viewsArray = [];
 
-  for (let i = 0; i < state.allProductsArray.length; i++) {
-    let thisProd = state.allProductsArray[i];
+  for (let i = 0; i < state.allProdArray.length; i++) {
+    let thisProd = state.allProdArray[i];
     labelArray.push(thisProd.name);
     clicksArray.push(thisProd.clicks);
     viewsArray.push(thisProd.views);
@@ -153,7 +154,6 @@ function renderChart() {
           beginAtZero: true,
         },
       },
-      // indexAxis: "y",
     },
   };
   const canvasChart = document.getElementById("myChart");
@@ -180,7 +180,7 @@ let unicorn = new Products("unicorn", "./images/unicorn.jpg");
 let waterCan = new Products("water-can", "./images/water-can.jpg");
 let wineGlass = new Products("wine-glass", "./images/wine-glass.jpg");
 
-state.allProductsArray.push(
+state.allProdArray.push(
   bag,
   banana,
   bathroom,

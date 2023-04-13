@@ -4,11 +4,12 @@
 
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(211, 252, 230);
   color: black;
 }
 
 header {
+  background-color: skyblue;
   font-size: 2rem;
   padding: 1.5rem;
 }
@@ -20,7 +21,7 @@ main {
 }
 
 section {
-  background-color: rgba(211, 187, 176, 0.3);
+  background-color: rgba(176, 211, 189, 0.3);
   grid-row-start: 1;
   grid-row-end: 4;
   grid-column-start: 2;
@@ -60,5 +61,12 @@ p {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.chart-container {
+  grid-row-start: 4;
+  grid-row-end: 4;
+  grid-column-start: 1;
   grid-column-end: 3;
 }
