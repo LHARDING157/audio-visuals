@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: rgb(228, 228, 228);
+  color: black;
+}
+
+header {
+  font-size: 2rem;
+  padding: 1.5rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 350px 4fr;
+  grid-template-rows: 6.5rem 25rem 20rem 40%;
+}
+
+section {
+  background-color: rgba(211, 187, 176, 0.3);
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+section img {
+  width: 460px;
+  max-height: 26rem;
+  border: 5px solid transparent;
+}
+
+section img:hover {
+  border: 5px solid rosybrown;
+  cursor: pointer;
+}
+
+ul {
+  margin: 1rem;
+}
+
+li {
+  margin: 0.5rem;
+}
+
+section + div {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+p {
+  margin: 2rem;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
