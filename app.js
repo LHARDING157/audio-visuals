@@ -28,6 +28,7 @@ function renderProduct() {
   let prod1 = getRandomNumber();
   let prod2 = getRandomNumber();
   let prod3 = getRandomNumber();
+
   if (prod1 === prod2) {
     prod2 = getRandomNumber();
   }
