@@ -31,8 +31,7 @@ function renderProduct() {
 
   if (prod1 === prod2) {
     prod2 = getRandomNumber();
-  }
-  if (prod1 === prod3) {
+  } else if (prod1 === prod3) {
     prod3 = getRandomNumber();
   } else if (prod2 === prod3) {
     prod3 = getRandomNumber();
@@ -62,25 +61,22 @@ function handleProdClick(event) {
     }
   }
   if (clicks === maxClicksAllowed) {
+    alert("Voting has Ended! Click 'OK' for results");
+    renderChart();
     productContainer.removeEventListener("click", handleProdClick);
-    resultButton.addEventListener("click", renderChart);
-    resultButton.addEventListener("click", renderResults);
-    // resultButton.className = `clicks-allowed`;
-    productContainer.className = `no-voting`;
-    alert("Please Click on Results");
   } else {
     renderProduct();
   }
 }
 
-function renderResults() {
-  let ul = document.querySelector("ul");
-  for (let i = 0; i < state.allProdArray.length; i++) {
-    let li = document.createElement("li");
-    li.textContent = `${state.allProdArray[i].name} had ${state.allProdArray[i].clicks} votes, and was seen ${state.allProdArray[i].views} times.`;
-    ul.appendChild(li);
-  }
-}
+// function renderResults() {
+//   let ul = document.querySelector("ul");
+//   for (let i = 0; i < state.allProdArray.length; i++) {
+//     let li = document.createElement("li");
+//     li.textContent = `${state.allProdArray[i].name} had ${state.allProdArray[i].clicks} votes, and was seen ${state.allProdArray[i].views} times.`;
+//     ul.appendChild(li);
+//   }
+// }
 
 function renderChart() {
   const labelArray = [];
